@@ -27,7 +27,11 @@ class HashTable {
       }
 
       if (duplicateElement.key === keys) {
-        this.table[keyRes].value = [duplicateElement.value, ...[val]];
+        if (duplicateElement.value instanceof Array) {
+          duplicateElement.value.push(val);
+        } else {
+          this.table[keyRes].value = [...[duplicateElement.value], ...[val]];
+        }
       }
     } else {
       this.table[keyRes] = { 'key': keys, 'value': val };
@@ -45,15 +49,5 @@ class HashTable {
   }
 }
 
+export default HashTable;
 
-const myHT = new HashTable(10);
-
-myHT.add('Dean', 'dean@gemail.com');
-myHT.add('Megan', 'megan@gemail.com');
-myHT.add('Dane', 'dane@gemail.com');
-myHT.add('Dean', 'deanmachine@gemail.com');
-
-console.log(myHT);
-
-
-// export default HashTable;
