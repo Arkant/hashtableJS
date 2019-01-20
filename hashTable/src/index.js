@@ -2,5 +2,5 @@ class HashTable {
 
 }
 
-export default HashTable;
 console.log(1);
+// export default HashTable;
