@@ -6,14 +6,14 @@ class HashTable {
   hash(key) {
     if (typeof key === 'number') {
       return key % this.length;
-    } else if (typeof key === 'string') {
-      let res = 0;
-
-      for (let i = 0; i < key.length; i++) {
-        res += key.charCodeAt(i);
-      }
-      return res % this.length;
     }
+
+    let res = 0;
+
+    for (let i = 0; i < key.length; i++) {
+      res += key.charCodeAt(i);
+    }
+    return res % this.length;
   }
 
   add(keys, val) {
@@ -50,4 +50,3 @@ class HashTable {
 }
 
 export default HashTable;
-
