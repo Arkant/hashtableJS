@@ -6,9 +6,7 @@ class HashTable {
   hash(key) {
     if (typeof key === 'number') {
       return key % this.length;
-    } else if (typeof key === 'string' && key.length < 2) {
-      return key.charCodeAt(0) % this.length;
-    } else if (typeof key === 'string' && key.length >= 2) {
+    } else if (typeof key === 'string') {
       let res = 0;
 
       for (let i = 0; i < key.length; i++) {
@@ -24,7 +22,7 @@ class HashTable {
       if (this.table[keyRes].key === key) {
         this.table[keyRes] = { key, 'value': [...this.table[keyRes].value, ...val] };
       } else if (this.table[keyRes].key !== key) {
-        this.table[keyRes + 1] = { key, 'value': val };
+        this.table.push({ key, 'value': val });
       }
     }
 
@@ -43,7 +41,7 @@ class HashTable {
 }
 
 
-const myHT = new HashTable(5);
+const myHT = new HashTable(10);
 
 myHT.add('Dean', 'dean@gemail.com');
 myHT.add('Megan', 'megan@gemail.com');
